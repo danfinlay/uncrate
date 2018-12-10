@@ -361,6 +361,7 @@
 	</head>
 	<body>
         <header>
+          <h1>HELLO!</h1>
             <div class="name">
                 <div class="logo" style="background-image: url(<%- config.logo %>)"></div>
                 <%- config.name %>
@@ -386,13 +387,13 @@
                         <a href="<%- config.root %>">home</a>
                     </li>
                     <% const walk = (children) => { %>
-                        <div class="indent">
+                        <details open class="indent">
                             <% children.sort().forEach(child => { %>
                                 <% if (child.type === 'directory') { %>
                                     <% if (child.children) { %>
-                                        <li>
+                                        <summary>
                                             <div class="folder"><%- getDisplayName(child) %></div>
-                                        </li>
+                                        </summary>
                                         <% walk(child.children); %>
                                     <% } %>
                                     <% return; %>
@@ -403,7 +404,7 @@
                                     </li>
                                 <% } %>
                             <% }); %>
-                        </div>
+                        </details>
                     <% }; %>
                     <% walk(filetree.children); %>
                 </ul>
